@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Benjamin TenWolde</title>
+
+    <meta name="author" content="Benjmain TenWolde">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link rel="icon" href="images/icon.png" type="image/svg+xml">
+</head>
+
+<style>
+    /* A simple utility class to hide one container. */
+    .hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    function showPubs(id) {
+        // id=0 => "Selected"; id=1 => "All"
+
+        if (id == 0) {
+            document.getElementById('pubs_selected').classList.remove('hidden');
+            document.getElementById('pubs_by_date').classList.add('hidden');
+            document.getElementById('select0').style = 'text-decoration:underline;';
+            document.getElementById('select1').style = '';
+        } else {
+            document.getElementById('pubs_selected').classList.add('hidden');
+            document.getElementById('pubs_by_date').classList.remove('hidden');
+            document.getElementById('select1').style = 'text-decoration:underline;';
+            document.getElementById('select0').style = '';
+        }
+
+        // Save user’s choice
+        sessionStorage.setItem('activeTab', id);
+    }
+
+    // On page load, restore the previously active tab (or default to 0)
+    window.addEventListener('DOMContentLoaded', function () {
+        let activeTab = sessionStorage.getItem('activeTab');
+        if (activeTab === null) {
+            activeTab = 0; // default
+        }
+        showPubs(activeTab);
+    });
+</script>
+
+<!--<style>
+    /* The container that holds both the image and the overlaid video */
+    .preview-container {
+        position: relative;
+        display: inline-block; /* ensures container size follows the image's size */
+    }
+
+    /* The overlay that fades in/out on hover */
+    .preview-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        /* Hidden by default, fades in on hover via JS */
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow: hidden; /* hides any video overshoot if aspect ratios differ */
+    }
+
+    /* Make the video fill the container while preserving aspect ratio */
+    .preview-overlay video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* or 'contain' for letterboxing */
+    }
+</style>
+-->
+
+<body>
+<table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tbody>
+    <tr style="padding:0px">
+        <td style="padding:0px">
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
+                <tr style="padding:0px">
+                    <td style="padding:2.5%;width:63%;vertical-align:middle">
+                        <p style="text-align:center">
+                            <name>Benjamin TenWolde</name>
+                        </p>
+                        <p>I'm a research scientist at <a href="https://www.navwar.navy.mil/"> NAVWAR Point Loma</a> in
+                            San Diego. I direct a small lab (NeuroML) where we support the DoD mission and resolve to
+                            distill new knowledge from computational neuroscience.
+                        <p>
+                            I completed my MS in Computer Science at
+                            <a href="https://gatech.edu/">Georgia Tech</a>, <a href="https://gatech.edu/">Georgia
+                            Institute of Technology</a>
+                            with advisor <a href="http://www.davidjoyner.net/">Prof. David Joyner</a> and
+                        </p>
+                        <p>
+                            I am completing my PhD in Computer Science, with a mix of cognitive and neuro science under
+                            my advisor <a href="https://pages.ucsd.edu/~desa/people.html">Dr. Virginia deSa </a> and my
+                            CS work is under
+                            <a href="https://cseweb.ucsd.edu/~gary/">Prof. Gary Cottrell </a>.
+                            I completed my BS in EE at the <a href="https://rochester.edu/">University of Rochester</a>.
+                        </p>
+                        <p>
+                            My current research focuses on biologically inspired computer vision and perception. My work
+                            is in understanding the computational circuits that underlie robustness, adaptability and
+                            modeling.
+                        </p>
+
+                        <p style="text-align:center">
+                            <a href="mailto:btenwolde@ucsd.edu">Email</a> &nbsp;/&nbsp;
+                            <!--<a href="data/JonBarron-CV.pdf">CV</a> &nbsp;/&nbsp; -->
+                            <a href="https://scholar.google.com/citations?user=L9MpFtAAAAAJ&hl=en&oi=ao">Scholar</a>
+                            &nbsp;/&nbsp;
+                            <a href="https://www.linkedin.com/in/bentenwolde/">LinkedIn</a> &nbsp;/&nbsp;
+                            <a href="https://github.com/benlten">Github</a>
+                        </p>
+                    </td>
+                    <td style="padding:2.5%;width:25%;max-width:25%">
+                        <a href="images/ben_headshot_blur.jpg">
+                            <img style="width:100%;max-width:100%" alt="profile photo"
+                                 src="images/ben_headshot_blur.jpg" class="hoverZoomLink">
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Publications heading with two buttons -->
+            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                <tbody>
+                <tr>
+                    <td style="padding:20px;width:100%;vertical-align:middle">
+                        <heading>
+                            Publications
+                        </heading>
+                        &nbsp;(<a href="javascript:showPubs(0)" id="select0">show selected</a> /
+                        <a href="javascript:showPubs(1)" id="select1">show all by date</a>)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- This is where publications will be dynamically inserted -->
+            <div id="pubs"></div>
+
+            <!-- Hidden container: first two publications only (show selected) -->
+            <div id="pubs_selected" class="hidden">
+                <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                    <tbody>
+
+
+                    <!-- A Convolutional Network Adaptation for Cortical Classification During Mobile Brain Imaging -->
+                    <!--<tr onmouseout="convnet_stop()" onmouseover="convnet_start()"> -->
+                    <tr>
+
+                    </tr>
+                        <td style="padding:16px; width:20%; vertical-align:middle">
+                            <div class="one">
+                                <img src="images/EEG_walk.png" width="100%">
+                            </div>
+
+                        </td>
+                        <td style="padding:8px; width:80%; vertical-align:middle">
+                            <a href="https://scholar.google.com/scholar?cluster=CONVNET_CLUSTER_ID">
+                                <span class="papertitle">A Convolutional Network Adaptation for Cortical Classification During Mobile Brain Imaging</span>
+                            </a>
+                            <br>
+                            <strong> B TenWolde </strong>,
+                            J Lukos,
+                            M Alam,
+                            JC Bradford,
+                            N Wymbs
+                            <br>
+                            <em>arXiv preprint arXiv:2310.07941</em>
+                            <br>
+
+                            <a href="https://arxiv.org/abs/2310.07941">arXiv</a>
+                            <br>
+                            <!--<a href="data/GargICCV2019.bib">bibtex</a> -->
+                            <p></p>
+                            <p>
+                                A study on adapting convolutional networks for cortical classification in the context of
+                                mobile brain imaging.
+                            </p>
+                        </td>
+                    </tr>
+                    <!-- U-EEG: A Deep Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal -->
+                    <!--<tr onmouseout="ueeg_stop()" onmouseover="ueeg_start()"> -->
+                    <tr>
+
+                    </tr>
+                        <td style="padding:16px; width:20%; vertical-align:middle">
+                            <div class="one">
+                                <img src="images/U_EEG.jpg" width="100%">
+                            </div>
+
+                        </td>
+                        <td style="padding:8px; width:80%; vertical-align:middle">
+                            <a href="https://ieeexplore.ieee.org/document/9672271">
+                                <span class="papertitle">U-EEG: A Deep Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal</span>
+                            </a>
+                            <br>
+                            J Onners,
+                            M Alam,
+                            <strong> B TenWolde </strong>
+                            N Wymbs,
+                            J Lukos
+                            <br>
+                            <em>IEEE Signal Processing in Medicine and Biology Symposium (SPMB)</em>, 2021, pp. 1–5&nbsp;
+                            <br>
+                            <br>
+                            <p></p>
+                            <p>
+                                A deep learning autoencoder designed to detect ocular artifacts in EEG signals.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Synthetic imagery for spatial resolution selection in maritime remote sensing -->
+                    <!--<tr onmouseout="ueeg_stop()" onmouseover="ueeg_start()"> -->
+                    <tr>
+                        <td style="padding:16px; width:20%; vertical-align:middle">
+                            <div class="one">
+                            </div>
+                                <img src="images/synth_ship_1.png" width="100%">
+                            </div>
+                            <!--
+                            <script type="text/javascript">
+                                function synthetic_start() {
+                                    document.getElementById('synthetic_image').style.opacity = "1";
+                                }
+
+                                function synthetic_stop() {
+                                    document.getElementById('synthetic_image').style.opacity = "0";
+                                }
+
+                                synthetic_stop();
+                            </script>
+                          -->
+                        </td>
+                        <td style="padding:8px; width:80%; vertical-align:middle">
+                            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11733/1173305/Synthetic-imagery-for-spatial-resolution-selection-in-maritime-remote-sensing/10.1117/12.2588178.short">
+                                <span class="papertitle">Synthetic imagery for spatial resolution selection in maritime remote sensing</span>
+                            </a>
+                            <br>
+                            CM Ward
+                            <strong> B TenWolde </strong>
+                            <br>
+                            <em>Geospatial Informatics XI</em>, 2021
+                            <br>
+                            <br>
+                            <p></p>
+                            <p>
+                                A study on utilizing synthetic imagery to aid in the selection of optimal spatial
+                                resolutions for maritime remote sensing applications.
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table style="width:100%;border:0px;border-spacing:0px;margin-right:auto;margin-left:auto;">
+                <tbody>
+                <tr>
+                    <td style="padding:0px">
+                        <br>
+                        <p style="text-align:center;font-size:small;">
+                            Thank you<a href="https://jonbarron.info/">Jon Barron</a> for sharing his website's
+                            <a href="https://github.com/jonbarron/website">source code</a>.
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
