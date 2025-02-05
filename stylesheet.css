@@ -90,6 +90,11 @@ a {
   font-size: 14px
 }
 
+b {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px
+}
+
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
@@ -116,6 +121,20 @@ name {
   height: 160px;
   position: relative;
 }
+
+.foot{
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 6px;
+  text-align:center;
+
+}
+
+a.smlink{
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 6px;
+  text-align:center;
+}
+
 
 .two {
   width: 160px;
