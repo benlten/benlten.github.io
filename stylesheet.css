@@ -169,31 +169,24 @@ papertitle:hover, .papertitle:hover {
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
-/* Social links */
-.social-links {
+/* Social icons */
+.social-icons {
   display: flex;
-  gap: 12px;
+  gap: 20px;
   justify-content: center;
-  flex-wrap: wrap;
   margin-top: 25px;
 }
 
-.social-links a {
-  padding: 10px 20px;
-  border: 2px solid var(--link-color);
-  border-radius: 25px;
-  font-size: 15px;
-  font-weight: 600;
+.social-icons a {
+  color: var(--text-secondary) !important;
+  font-size: 28px;
   transition: all 0.3s ease;
-  background: transparent;
+  text-decoration: none !important;
 }
 
-.social-links a:hover {
-  background: linear-gradient(135deg, var(--link-color) 0%, #2196F3 100%);
-  color: white !important;
-  border-color: transparent;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(23, 114, 208, 0.3);
+.social-icons a:hover {
+  color: var(--link-color) !important;
+  transform: translateY(-3px);
 }
 
 /* Research focus box */
