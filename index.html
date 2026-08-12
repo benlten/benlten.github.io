@@ -1,308 +1,388 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Benjamin TenWolde</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benjamin TenWolde</title>
+<meta name="author" content="Benjamin TenWolde">
+<meta name="description" content="Benjamin TenWolde — Principal Research Scientist at NAVWAR and PhD candidate at UC San Diego, working on biologically inspired computer vision, robustness, and perception.">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="stylesheet.css">
 
-    <meta name="author" content="Benjmain TenWolde">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Benjamin TenWolde">
+<meta property="og:description" content="Principal Research Scientist at NAVWAR. Biologically inspired computer vision, robustness, and perception.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.benjamintenwolde.com/">
+<meta property="og:image" content="https://www.benjamintenwolde.com/images/ben_headshot.jpg">
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="icon" href="images/icon.png" type="image/svg+xml">
-    <!-- Font Awesome & Academicons for social icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
-</head>
+<!-- Set theme before first paint to avoid a flash -->
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('theme'); } catch (e) {}
+  if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
 
-<!-- Tracking-->
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G04SGX72WQ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-G04SGX72WQ');
 </script>
-
-
-<script>
-    // Theme toggle functionality
-    function toggleTheme() {
-        const html = document.documentElement;
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', newTheme === 'dark' ? 'dark' : '');
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    }
-
-    function updateThemeIcon(theme) {
-        const btn = document.getElementById('theme-toggle-btn');
-        if (btn) {
-            btn.textContent = theme === 'dark' ? '☀️' : '🌙';
-            btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-        }
-    }
-
-    // Initialize theme on page load
-    (function() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        if (savedTheme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-        }
-        // Update icon after DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            updateThemeIcon(savedTheme);
-        });
-    })();
-</script>
-
-<script>
-    function showPubs(id) {
-        // id=0 => "Selected"; id=1 => "All"
-
-        if (id == 0) {
-            document.getElementById('pubs_selected').classList.remove('hidden');
-            document.getElementById('pubs_by_date').classList.add('hidden');
-            document.getElementById('select0').style = 'text-decoration:underline;';
-            document.getElementById('select1').style = '';
-        } else {
-            document.getElementById('pubs_selected').classList.add('hidden');
-            document.getElementById('pubs_by_date').classList.remove('hidden');
-            document.getElementById('select1').style = 'text-decoration:underline;';
-            document.getElementById('select0').style = '';
-        }
-
-        // Save user’s choice
-        sessionStorage.setItem('activeTab', id);
-    }
-
-    // On page load, restore the previously active tab (or default to 0)
-    window.addEventListener('DOMContentLoaded', function () {
-        let activeTab = sessionStorage.getItem('activeTab');
-        if (activeTab === null) {
-            activeTab = 0; // default
-        }
-        showPubs(activeTab);
-    });
-</script>
-
-<!--<style>
-    /* The container that holds both the image and the overlaid video */
-    .preview-container {
-        position: relative;
-        display: inline-block; /* ensures container size follows the image's size */
-    }
-
-    /* The overlay that fades in/out on hover */
-    .preview-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-        /* Hidden by default, fades in on hover via JS */
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        overflow: hidden; /* hides any video overshoot if aspect ratios differ */
-    }
-
-    /* Make the video fill the container while preserving aspect ratio */
-    .preview-overlay video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* or 'contain' for letterboxing */
-    }
-</style>
--->
+</head>
 
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- Theme Toggle Button -->
-<button id="theme-toggle-btn" class="theme-toggle" onclick="toggleTheme()" aria-label="Switch to dark mode">🌙</button>
+<button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch colour theme">
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+</button>
 
-<table style="width:100%;max-width:950px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tbody>
-    <tr style="padding:0px">
-        <td style="padding:0px">
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr style="padding:0px">
-                    <td style="padding:2.5%;width:63%;vertical-align:middle">
-                        <p style="text-align:center">
-                            <name>Benjamin TenWolde</name>
-                            <span class="tagline">Research Scientist · Computational Neuroscience · Computer Vision</span>
-                        </p>
-                        <p>I'm a research scientist at <a href="https://www.navwar.navy.mil/">NAVWAR Point Loma</a> in San Diego. I am the director of a small lab (NeuroML) where we support the DoD mission and resolve to distill new knowledge from computational neuroscience.
-                        </p>
-                        <p>
-                            I completed my MS in Computer Science at <a href="https://gatech.edu/">Georgia Tech</a> with advisor <a href="http://www.davidjoyner.net/">Prof. David Joyner</a> and <a href="https://dilab.gatech.edu/ashok-k-goel/">Prof. Ashok Goel</a>.
-                        </p>
-                        <p>
-                            I am completing my PhD in Computer Science as a <a href="https://www.smartscholarship.org/">DoD SMART Scholar</a>, with a mix of cognitive and neuro science under my advisor <a href="https://pages.ucsd.edu/~desa/people.html">Dr. Virginia de Sa</a> and my CS work is under <a href="https://cseweb.ucsd.edu/~gary/">Prof. Gary Cottrell</a>. I completed my BS in EE at the <a href="https://rochester.edu/">University of Rochester</a>.
-                        </p>
-                        <p>
-                            My current research focuses on biologically inspired computer vision and perception. My work is in understanding the computational circuits that underlie robustness, adaptability and modeling.
-                        </p>
+<div class="page">
 
-                        <div class="social-icons">
-                            <a href="https://scholar.google.com/citations?user=L9MpFtAAAAAJ&hl=en&oi=ao" title="Google Scholar"><i class="ai ai-google-scholar ai-lg"></i></a>
-                            <a href="https://www.linkedin.com/in/bentenwolde/" title="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
-                            <a href="https://github.com/benlten" title="GitHub"><i class="fab fa-github fa-lg"></i></a>
-                        </div>
-                    </td>
-                    <td style="padding:2.5%;width:30%;max-width:30%">
-                        <a href="images/ben_headshot_blur.jpg">
-                            <img style="width:100%;max-width:100%" alt="profile photo"
-                                 src="images/ben_headshot_blur.jpg" class="profile-photo">
-                        </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+  <header class="hero">
+    <div class="hero__text">
+      <h1>Benjamin TenWolde</h1>
+      <ul class="affil">
+        <li><strong>Principal Research Scientist</strong> · NAVWAR — Naval Information Warfare Center Pacific, San Diego</li>
+        <li><strong>Founder &amp; Director</strong> · NeuroML and NeuroVision Labs</li>
+        <li><strong>PhD Candidate</strong> · Computer Science, UC San Diego</li>
+      </ul>
 
-            <!-- Section divider -->
-            <hr class="section-divider">
+      <p class="lead">I build and evaluate perception systems for settings where failure has
+      consequences — and I study why biological vision degrades gracefully where machine vision
+      falls off a cliff.</p>
 
-            <!-- Publications heading with two buttons -->
-            <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:20px;width:100%;vertical-align:middle">
-                        <heading>
-                            Publications
-                        </heading>
-                        &nbsp;(<a href="javascript:showPubs(0)" id="select0">selected</a> /
-                        <a href="javascript:showPubs(1)" id="select1">all</a>)
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+      <p>At <a href="https://www.navwar.navy.mil/">NAVWAR</a> I founded and direct the NeuroML and
+      NeuroVision laboratories, growing a two-person effort into a seven-PhD research program
+      spanning adversarial robustness, GIS-based satellite and spectral analysis, and biologically
+      inspired perception. I am completing a PhD at <a href="https://ucsd.edu/">UC San Diego</a> as a
+      <a href="https://www.smartscholarship.org/">DoD SMART Scholar</a>, advised by
+      <a href="https://pages.ucsd.edu/~desa/people.html">Virginia de Sa</a> in Cognitive Science and
+      <a href="https://cseweb.ucsd.edu/~gary/">Gary Cottrell</a> in CSE. Earlier I completed an MS in
+      Computer Science at <a href="https://gatech.edu/">Georgia Tech</a> with
+      <a href="http://www.davidjoyner.net/">David Joyner</a> and
+      <a href="https://dilab.gatech.edu/ashok-k-goel/">Ashok Goel</a>, and a BS in Electrical
+      Engineering at the <a href="https://rochester.edu/">University of Rochester</a>.</p>
 
-            <!-- This is where publications will be dynamically inserted -->
-            <div id="pubs"></div>
+      <ul class="linkrow">
+        <li><a href="https://scholar.google.com/citations?user=L9MpFtAAAAAJ&amp;hl=en">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+          Google Scholar</a></li>
+        <li><a href="https://github.com/benlten">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/bentenwolde/">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          LinkedIn</a></li>
+      </ul>
+    </div>
 
-            <!-- Hidden container: first two publications only (show selected) -->
-            <div id="pubs_selected" class="hidden">
-                <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-                    <tbody>
+    <div class="hero__photo">
+      <img src="images/ben_headshot.jpg" width="700" height="1127" alt="Benjamin TenWolde">
+    </div>
+  </header>
 
+  <main id="main">
 
-                    <!-- A Convolutional Network Adaptation for Cortical Classification During Mobile Brain Imaging -->
-                    <tr class="pub-row">
-                        <td style="padding:20px; width:25%; vertical-align:middle">
-                            <div class="one">
-                                <img src="images/EEG_walk.png" width="100%">
-                            </div>
-                        </td>
-                        <td style="padding:16px; width:75%; vertical-align:middle">
-                            <a href="https://arxiv.org/abs/2310.07941">
-                                <span class="papertitle">A Convolutional Network Adaptation for Cortical Classification During Mobile Brain Imaging</span>
-                            </a>
-                            <br>
-                            <strong>B TenWolde</strong>, J Lukos, M Alam, JC Bradford, N Wymbs
-                            <br>
-                            <em>arXiv preprint</em>, 2023
-                            <p>
-                                We adapt convolutional networks for real-time cortical classification during mobile EEG, enabling brain imaging outside the lab.
-                            </p>
-                            <div class="pub-links">
-                                <a href="https://arxiv.org/abs/2310.07941">📄 Paper</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- U-EEG: A Deep Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal -->
-                    <tr class="pub-row">
-                        <td style="padding:20px; width:25%; vertical-align:middle">
-                            <div class="one">
-                                <img src="images/U_EEG.jpg" width="100%">
-                            </div>
-                        </td>
-                        <td style="padding:16px; width:75%; vertical-align:middle">
-                            <a href="https://ieeexplore.ieee.org/document/9672271">
-                                <span class="papertitle">U-EEG: A Deep Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal</span>
-                            </a>
-                            <br>
-                            J Onners, M Alam, <strong>B TenWolde</strong>, N Wymbs, J Lukos
-                            <br>
-                            <em>IEEE SPMB</em>, 2021
-                            <p>
-                                A U-Net autoencoder that removes eye-blink artifacts from EEG signals, outperforming ICA on low-electrode setups.
-                            </p>
-                            <div class="pub-links">
-                                <a href="https://ieeexplore.ieee.org/document/9672271">📄 Paper</a>
-                            </div>
-                        </td>
-                    </tr>
+    <section id="research">
+      <div class="section-head"><h2>Research</h2></div>
+      <div class="threads">
+        <div class="thread">
+          <h3>Robustness</h3>
+          <p>Why human vision degrades gradually and legibly under noise, occlusion and attack,
+          while convolutional and transformer models fail abruptly — and what in the circuitry
+          accounts for the difference.</p>
+        </div>
+        <div class="thread">
+          <h3>Adaptation</h3>
+          <p>Perceptual systems that retune to a new distribution, a new sensor or a new task
+          without retraining, and the mechanisms that make that possible at low cost.</p>
+        </div>
+        <div class="thread">
+          <h3>Modeling</h3>
+          <p>Building models that are genuine accounts of the biology rather than systems merely
+          matched to it on benchmark performance — including auditing what the benchmarks measure.</p>
+        </div>
+      </div>
+      <p style="margin-top:var(--s-m);color:var(--ink-2);font-size:var(--step--1)">Earlier work in
+      EEG decoding and maritime remote sensing is the empirical grounding for these questions rather
+      than a detour: EEG taught what a noisy, non-stationary biological signal actually looks like,
+      and remote sensing taught what distribution shift costs once a system is deployed.</p>
+    </section>
 
-                    <!-- Synthetic imagery for spatial resolution selection in maritime remote sensing -->
-                    <tr class="pub-row">
-                        <td style="padding:20px; width:25%; vertical-align:middle">
-                            <div class="one">
-                                <img src="images/synth_ship_1.png" width="100%">
-                            </div>
-                        </td>
-                        <td style="padding:16px; width:75%; vertical-align:middle">
-                            <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11733/1173305/Synthetic-imagery-for-spatial-resolution-selection-in-maritime-remote-sensing/10.1117/12.2588178.short">
-                                <span class="papertitle">Synthetic imagery for spatial resolution selection in maritime remote sensing</span>
-                            </a>
-                            <br>
-                            CM Ward, <strong>B TenWolde</strong>
-                            <br>
-                            <em>SPIE Geospatial Informatics XI</em>, 2021
-                            <p>
-                                Synthetic imagery helps determine optimal spatial resolution for detecting vessels in maritime remote sensing.
-                            </p>
-                            <div class="pub-links">
-                                <a href="https://www.spiedigitallibrary.org/conference-proceedings-of-spie/11733/1173305/Synthetic-imagery-for-spatial-resolution-selection-in-maritime-remote-sensing/10.1117/12.2588178.short">📄 Paper</a>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+    <section id="publications">
+      <div class="section-head">
+        <h2>Selected publications</h2>
+        <span class="note">earlier work published as B. Cichy</span>
+      </div>
+
+      <article class="pub">
+        <div class="pub__fig">
+          <img src="images/memorability_lime.jpg" width="900" height="622"
+               alt="LIME attribution maps over photographs, comparing ResMem's distributed attributions against ViTMem's degenerate ones">
+        </div>
+        <div class="pub__body">
+          <h3 class="pub__title"><a href="data/tenwolde_ccn2026.pdf">Humans Remember People; Models
+          Remember Pixels: Exposing Blind Spots in Visual Memorability Prediction</a>
+          <span class="tag">Poster</span></h3>
+          <p class="pub__authors"><span class="me">Benjamin TenWolde</span>, Virginia de Sa</p>
+          <p class="pub__venue">Conference on Cognitive Computational Neuroscience (CCN) · 2026</p>
+          <p class="pub__note">Two widely used memorability predictors track pixel-level colour and
+          frequency statistics rather than the people and scenes humans actually remember —
+          imperceptible perturbations move their scores far more than the presence of a person does.</p>
+          <ul class="pub__links">
+            <li><a href="data/tenwolde_ccn2026.pdf">Paper</a></li>
+            <li><a href="data/tenwolde_ccn2026_poster.pdf">Poster</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub__fig">
+          <img src="images/EEG_walk.png" width="2397" height="605"
+               alt="EEG electrode montage and cortical classification during walking">
+        </div>
+        <div class="pub__body">
+          <h3 class="pub__title"><a href="https://arxiv.org/abs/2310.07941">A Convolutional Network
+          Adaptation for Cortical Classification During Mobile Brain Imaging</a>
+          <span class="tag tag--muted">Preprint</span></h3>
+          <p class="pub__authors"><span class="me">B. Cichy</span>, J. Lukos, M. Alam, J. C. Bradford, N. Wymbs</p>
+          <p class="pub__venue">arXiv:2310.07941 · 2023</p>
+          <p class="pub__note">Adapting convolutional networks for real-time cortical classification
+          during mobile EEG, moving brain imaging out of the lab and into free movement.</p>
+          <ul class="pub__links">
+            <li><a href="https://arxiv.org/abs/2310.07941">arXiv</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub__fig">
+          <img src="images/U_EEG.jpg" width="300" height="330"
+               alt="U-Net autoencoder architecture for EEG ocular artifact removal">
+        </div>
+        <div class="pub__body">
+          <h3 class="pub__title"><a href="https://ieeexplore.ieee.org/document/9672271">U-EEG: A Deep
+          Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal</a></h3>
+          <p class="pub__authors">J. Onners, M. Alam, <span class="me">B. Cichy</span>, N. Wymbs, J. Lukos</p>
+          <p class="pub__venue">IEEE Signal Processing in Medicine and Biology (SPMB) · 2021 · pp. 1–5</p>
+          <p class="pub__note">A U-Net autoencoder that removes eye-blink artifacts from EEG,
+          outperforming ICA on low-electrode setups where ICA has too few channels to work with.</p>
+          <ul class="pub__links">
+            <li><a href="https://ieeexplore.ieee.org/document/9672271">IEEE</a></li>
+            <li><a href="https://doi.org/10.1109/SPMB52430.2021.9672271">DOI</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div class="pub__fig">
+          <img src="images/synth_ship_1.png" width="415" height="283"
+               alt="Synthetic maritime vessel imagery rendered at varying spatial resolutions">
+        </div>
+        <div class="pub__body">
+          <h3 class="pub__title"><a href="https://doi.org/10.1117/12.2588178">Synthetic imagery for
+          spatial resolution selection in maritime remote sensing</a></h3>
+          <p class="pub__authors">C. M. Ward, <span class="me">B. Cichy</span></p>
+          <p class="pub__venue">Proc. SPIE 11733, Geospatial Informatics XI · 2021 · 1173305</p>
+          <p class="pub__note">Using synthetic imagery to determine the spatial resolution actually
+          required to detect vessels, rather than procuring for it by guesswork.</p>
+          <ul class="pub__links">
+            <li><a href="https://doi.org/10.1117/12.2588178">DOI</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <section id="preprints">
+      <div class="section-head">
+        <h2>Preprints &amp; under review</h2>
+        <span class="note">not yet peer-reviewed</span>
+      </div>
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry__when">under review</div>
+          <div class="entry__what">
+            <div class="entry__role">Cosine is Human: The Reproducibility Ceiling of Perceptual Similarity</div>
+            <div class="entry__org"><span class="me">B. TenWolde</span> · NeurIPS 2026, Evaluations
+            and Datasets Track</div>
+            <p class="entry__detail">Eleven perceptual-similarity metrics evaluated on the full
+            NIGHTS corpus rather than its unanimous-agreement subset. Untrained cosine distance on a
+            frozen self-supervised backbone reaches 74.1%, while a split-half estimate shows the
+            majority labels themselves reproduce only 70.1% of the time — the extra accuracy from
+            supervised training reflects matching the collected votes, not closer agreement with
+            human judgment.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">submitted</div>
+          <div class="entry__what">
+            <div class="entry__role">Enhancing Adversarial Robustness of Vision Transformers through
+            Feature Upsampling</div>
+            <div class="entry__org"><span class="me">Benjamin TenWolde</span>, John Driscoll, Derrick
+            Yao · ICLR 2026 Workshop on Principled Design for Trustworthy AI</div>
+            <p class="entry__detail">Robust features cannot be learned while the ViT backbone is
+            frozen. Training the backbone and the upsampling module jointly reaches 60.78% robust
+            accuracy under AutoAttack on ImageNet-100, against 46.06% for adversarial training alone,
+            while holding clean accuracy at 78.44% rather than 53.80%.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="talks">
+      <div class="section-head"><h2>Talks &amp; posters</h2></div>
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry__when">2026</div>
+          <div class="entry__what">
+            <div class="entry__role">Humans Remember People; Models Remember Pixels</div>
+            <div class="entry__org">Conference on Cognitive Computational Neuroscience (CCN), New York</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2019</div>
+          <div class="entry__what">
+            <div class="entry__role">Cortical Classification During Mobile Brain Imaging</div>
+            <div class="entry__org">9th International IEEE/EMBS Conference on Neural Engineering (NER)</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2019</div>
+          <div class="entry__what">
+            <div class="entry__role">Cortical Classification During Mobile Brain Imaging</div>
+            <div class="entry__org">Human Systems Conference, NDIA (HEF TAG)</div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <div class="section-head"><h2>Experience</h2></div>
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry__when">2021 — present</div>
+          <div class="entry__what">
+            <div class="entry__role">Principal Research Scientist</div>
+            <div class="entry__org">NAVWAR — Naval Information Warfare Center Pacific</div>
+            <div class="entry__detail">
+              Founded and direct the NeuroML and NeuroVision laboratories, advancing biologically
+              inspired machine vision and human-cognitive ML systems.
+              <ul>
+                <li>Grew a two-person group into a seven-PhD research program with significant DoD backing</li>
+                <li>Increased research grant funding by 500% through cross-institutional collaborations</li>
+                <li>Pioneered adversarial robustness methods for neural networks on defense platforms</li>
+                <li>Integrated GIS-based satellite mapping with image and spectral analysis for remote sensing and airborne detection</li>
+                <li>Consolidated lab IT, improving computation 5× and dataset storage 25×</li>
+              </ul>
             </div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2020 — 2021</div>
+          <div class="entry__what">
+            <div class="entry__role">Principal Scientist</div>
+            <div class="entry__org">NAVWAR</div>
+            <div class="entry__detail">PI for machine learning classification of neuro-cortical (EEG)
+            signals, and for NLP of scientific texts toward ontological understanding and knowledge
+            graph development.</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2018 — 2020</div>
+          <div class="entry__what">
+            <div class="entry__role">Scientist</div>
+            <div class="entry__org">NAVWAR</div>
+            <div class="entry__detail">Managed multinational remote sensing algorithm development for
+            low-resolution satellite imagery. Compressed a two-year program into five months while
+            gaining 10% accuracy and a 1000% speedup.</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2015 — 2017</div>
+          <div class="entry__what">
+            <div class="entry__role">3-Screen Studio</div>
+            <div class="entry__org">Thermo Fisher Scientific · Millennium Health</div>
+            <div class="entry__detail">Back-end service development and reverse-engineering of
+            LabVIEW-based instrument testing software for PCR machines, cutting field service engineer
+            time 20×.</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">2005 — 2011</div>
+          <div class="entry__what">
+            <div class="entry__role">Earlier engineering</div>
+            <div class="entry__org">NAVWAR · UC San Diego · LSI · Synopsys</div>
+            <div class="entry__detail">V-22 Osprey maintenance software; social-graph data collection
+            at UCSD; staff engineer on 65 and 45nm clock methodology at LSI; back-end EDA applications
+            engineering at Synopsys across 0.18µm, 90nm and 65nm tape-outs.</div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-            <table style="width:100%;border:0px;border-spacing:0px;margin-right:auto;margin-left:auto;">
-                <tbody>
-                <tr>
-                    <td style="padding:0px">
-                        <br>
+    <section id="teaching">
+      <div class="section-head"><h2>Teaching</h2></div>
+      <ul class="entries">
+        <li class="entry">
+          <div class="entry__when">UC San Diego</div>
+          <div class="entry__what">
+            <div class="entry__detail">DSC148 Introductory Machine Learning (Spring 2026) ·
+            DSC180A/B Data Science Capstone (Fall 2025 – Winter 2026) · earlier TA appointments in
+            VLSI design and digital integrated circuits (ECE 165, ECE 260A/B, CSE 143, CSE 241A)</div>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry__when">Georgia Tech</div>
+          <div class="entry__what">
+            <div class="entry__detail">CS6601 Artificial Intelligence (Summer 2017) · CS7650 (Spring 2017)</div>
+          </div>
+        </li>
+      </ul>
+    </section>
 
-                        <p style="text-align:center;">
-                            <div class="foot">Thank you <a class="smlink" href="https://jonbarron.info/">Jon Barron</a> for sharing his website's
-                            <a class="smlink" href="https://github.com/jonbarron/website">source code</a>.
-                          </div>
-                        </p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+    <section id="awards">
+      <div class="section-head"><h2>Awards &amp; service</h2></div>
+      <ul class="chips">
+        <li><b>DoD SMART Scholarship</b> — 2023–present</li>
+        <li><b>Halıcıoğlu Fellowship</b> — 2024–present</li>
+        <li><b>Program Chair</b>, IEEE SPMB — 2022</li>
+        <li><b>Reviewer</b>, ICLR 2026 Workshop on Trustworthy AI</li>
+        <li>IEEE Member — 2021–present</li>
+        <li>Society for Neuroscience — 2022–present</li>
+      </ul>
+    </section>
 
-        </td>
-    </tr>
-    </tbody>
-</table>
+  </main>
 
-<!-- Fade-in animation on scroll -->
+  <footer class="foot">
+    <p>Views expressed here are my own and do not represent the Department of the Navy or the
+    Department of Defense.</p>
+    <p>Thank you <a href="https://jonbarron.info/">Jon Barron</a> for sharing his website's
+    <a href="https://github.com/jonbarron/website">source code</a>, which this site began from.</p>
+  </footer>
+
+</div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const fadeElements = document.querySelectorAll('.pub-row');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        fadeElements.forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
-        });
-    });
+(function () {
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var root = document.documentElement;
+    var explicit = root.getAttribute('data-theme');
+    var isDark = explicit
+      ? explicit === 'dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+})();
 </script>
 </body>
 </html>
