@@ -210,8 +210,8 @@ img { max-width: 100%; height: auto; display: block; }
   padding-block: var(--s-xl) var(--s-l);
 }
 
-.hero__text { flex: 1 1 22rem; min-width: 0; }
-.hero__photo { flex: 0 0 clamp(9rem, 20vw, 14rem); }
+.hero__text { flex: 1 1 22rem; min-width: 0; max-width: var(--measure); }
+.hero__photo { flex: 0 0 clamp(9rem, 20vw, 17rem); margin-inline-start: auto; }
 
 .hero__photo img {
   border-radius: 14px;
