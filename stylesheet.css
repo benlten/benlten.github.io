@@ -64,34 +64,34 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg:      hsl(25 14% 9%);
-    --surface: hsl(25 12% 13%);
-    --ink:     hsl(35 14% 92%);
-    --ink-2:   hsl(30 8% 70%);
-    --ink-3:   hsl(30 7% 58%);
-    --rule:    hsl(28 10% 22%);
+    --bg:      hsl(0 0% 9%);
+    --surface: hsl(0 0% 13%);
+    --ink:     hsl(0 0% 93%);
+    --ink-2:   hsl(0 0% 71%);
+    --ink-3:   hsl(0 0% 59%);
+    --rule:    hsl(0 0% 22%);
     --accent:      hsl(355 70% 68%);
     --accent-soft: hsl(355 30% 18%);
     --accent-hi:   hsl(355 80% 78%);
     --mark:    hsl(45 28% 18%);
-    --panel:   hsl(25 10% 17%);
+    --panel:   hsl(0 0% 16.5%);
     --flag:    hsl(30 92% 62%);
   }
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg:      hsl(25 14% 9%);
-  --surface: hsl(25 12% 13%);
-  --ink:     hsl(35 14% 92%);
-  --ink-2:   hsl(30 8% 70%);
-  --ink-3:   hsl(30 7% 58%);
-  --rule:    hsl(28 10% 22%);
+  --bg:      hsl(0 0% 9%);
+  --surface: hsl(0 0% 13%);
+  --ink:     hsl(0 0% 93%);
+  --ink-2:   hsl(0 0% 71%);
+  --ink-3:   hsl(0 0% 59%);
+  --rule:    hsl(0 0% 22%);
   --accent:      hsl(355 70% 68%);
   --accent-soft: hsl(355 30% 18%);
   --accent-hi:   hsl(355 80% 78%);
   --mark:    hsl(45 28% 18%);
-  --panel:   hsl(25 10% 17%);
+  --panel:   hsl(0 0% 16.5%);
   --flag:    hsl(30 92% 62%);
 }
 
