@@ -103,9 +103,9 @@
           <span class="tag">Poster</span></h3>
           <p class="pub__authors"><span class="me">Benjamin TenWolde</span>, Virginia de Sa</p>
           <p class="pub__venue">Conference on Cognitive Computational Neuroscience (CCN) · 2026</p>
-          <p class="pub__note">Two widely used memorability predictors track pixel-level colour and
-          frequency statistics rather than the people and scenes humans actually remember —
-          imperceptible perturbations move their scores far more than the presence of a person does.</p>
+          <p class="pub__note">Gradient-guided pixel perturbations shift predictions by ~0.56, more than
+          eight times the person-presence effect, indicating that these models rely on pixel-level
+          statistics rather than the scene-level processing that underlies human memorability.</p>
           <ul class="pub__links">
             <li><a href="data/tenwolde_ccn2026.pdf">Paper</a></li>
             <li><a href="data/tenwolde_ccn2026_poster.pdf">Poster</a></li>
@@ -124,8 +124,11 @@
           <span class="tag tag--muted">Preprint</span></h3>
           <p class="pub__authors"><span class="me">B. Cichy</span>, J. Lukos, M. Alam, J. C. Bradford, N. Wymbs</p>
           <p class="pub__venue">arXiv:2310.07941 · 2023</p>
-          <p class="pub__note">Adapting convolutional networks for real-time cortical classification
-          during mobile EEG, moving brain imaging out of the lab and into free movement.</p>
+          <p class="pub__note">Our goal was to classify cognitive events from EEG signals while subjects
+          simultaneously walked on a treadmill, sometimes while carrying a rucksack equivalent to 40%
+          of their body weight. To our knowledge, these results are the first documented
+          implementation of a DNN for the classification of cognitive neural state during dual-task
+          walking.</p>
           <ul class="pub__links">
             <li><a href="https://arxiv.org/abs/2310.07941">arXiv</a></li>
           </ul>
@@ -142,8 +145,10 @@
           Learning Autoencoder for the Detection of Ocular Artifact in EEG Signal</a></h3>
           <p class="pub__authors">J. Onners, M. Alam, <span class="me">B. Cichy</span>, N. Wymbs, J. Lukos</p>
           <p class="pub__venue">IEEE Signal Processing in Medicine and Biology (SPMB) · 2021 · pp. 1–5</p>
-          <p class="pub__note">A U-Net autoencoder that removes eye-blink artifacts from EEG,
-          outperforming ICA on low-electrode setups where ICA has too few channels to work with.</p>
+          <p class="pub__note">We evaluated an approach to address this limitation by modifying a U-Net
+          convolutional neural network to extract blink artifacts from EEG signals contaminated with
+          electrooculography signal. Our model removed ocular artifacts with a higher accuracy
+          compared to the industry standard ICA algorithm.</p>
           <ul class="pub__links">
             <li><a href="https://ieeexplore.ieee.org/document/9672271">IEEE</a></li>
             <li><a href="https://doi.org/10.1109/SPMB52430.2021.9672271">DOI</a></li>
@@ -161,8 +166,10 @@
           spatial resolution selection in maritime remote sensing</a></h3>
           <p class="pub__authors">C. M. Ward, <span class="me">B. Cichy</span></p>
           <p class="pub__venue">Proc. SPIE 11733, Geospatial Informatics XI · 2021 · 1173305</p>
-          <p class="pub__note">Using synthetic imagery to determine the spatial resolution actually
-          required to detect vessels, rather than procuring for it by guesswork.</p>
+          <p class="pub__note">We address a lack of class coherency across datasets at varying spatial
+          resolutions by introducing a large 42-class synthetic dataset, Maritime Vessels at Varying
+          Resolutions (MVVR-42). We explore the effect of spatial resolution on performance in ship
+          detection tasks.</p>
           <ul class="pub__links">
             <li><a href="https://doi.org/10.1117/12.2588178">DOI</a></li>
           </ul>
@@ -182,12 +189,10 @@
             <div class="entry__role">Cosine is Human: The Reproducibility Ceiling of Perceptual Similarity</div>
             <div class="entry__org"><span class="me">Benjamin TenWolde</span> · NeurIPS 2026,
             Evaluations and Datasets Track</div>
-            <p class="entry__detail">Eleven perceptual-similarity metrics evaluated on the full
-            NIGHTS corpus rather than its unanimous-agreement subset. Untrained cosine distance on a
-            frozen self-supervised backbone reaches 74.1%, while a split-half estimate shows the
-            majority labels themselves reproduce only 70.1% of the time — the extra accuracy from
-            supervised training reflects matching the collected votes, not closer agreement with
-            human judgment.</p>
+            <p class="entry__detail">On the 64,420 non-tie triplets, cosine distance on a frozen self-supervised
+            backbone reaches 74.1% accuracy without training, LoRA fine-tuning reaches 77–79%, and the
+            DreamSim ensemble reaches 80.7%. A split-half reproducibility estimate from the triplet
+            vote counts shows that majority labels reproduce only 70.1% of the time overall.</p>
           </div>
         </li>
       </ul>
