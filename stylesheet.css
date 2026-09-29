@@ -21,8 +21,11 @@
   --step-3:  clamp(1.602rem, 1.435rem + 0.833vw, 2.081rem);
   --step-4:  clamp(1.836rem, 1.573rem + 1.315vw, 2.594rem);
 
-  --measure: 40rem;
-  --wide: 58rem;
+  /* Prose measure and page width. Peers at 1440px: Ritwik Gupta runs a
+     1120px page with 814px prose, Stephanie Fu 900/870 -- both at 16px.
+     Charter here is 19px, so the same character count needs more room. */
+  --measure: 46rem;
+  --wide: 72rem;
 
   --s-3xs: 0.25rem;
   --s-2xs: 0.5rem;
@@ -322,7 +325,7 @@ section { margin-block-start: var(--s-xl); scroll-margin-top: var(--s-m); }
 .pub:hover { border-color: var(--accent); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07); }
 
 .pub__fig {
-  flex: 0 0 15rem;
+  flex: 0 0 17rem;
   max-width: 100%;
   background: var(--panel);
   display: grid;
