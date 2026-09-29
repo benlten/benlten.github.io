@@ -360,6 +360,9 @@ section { margin-block-start: var(--s-xl); scroll-margin-top: var(--s-m); }
   font-weight: 600;
   margin: 0 0 var(--s-2xs);
   letter-spacing: -0.012em;
+  /* On the element, not just on the <a>, so a title without a link yet still
+     reads as a title rather than as body text. */
+  color: var(--accent);
 }
 .pub__title a { color: var(--accent); }
 .pub__title a:hover { color: var(--accent-hi); text-decoration: none; }
